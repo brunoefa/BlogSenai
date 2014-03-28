@@ -1,0 +1,14 @@
+.autor {
+	color: #ccc;
+	font-style: italic;
+	font-size: 16px;
+}
+
+.lead{
+	margin-bottom: 14px;
+} 
+
+#logo{
+	text-decoration: none;
+	color: #FFF;
+}
