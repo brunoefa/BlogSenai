@@ -1,8 +1,8 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,11 +18,30 @@ public class Index extends HttpServlet {
     }
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<h1>Service</h1>");
+		
+		String nome = request.getParameter("nome");
+		String periodo = request.getParameter("periodo");
+		
+		int periodoInt = 0;
+		try {
+			periodoInt = Integer.parseInt(periodo);
+		} catch (NumberFormatException e) {	
+		}
+		
+		String comprimento = "";
+		
+		if (1 == periodoInt) {
+			comprimento = ", bom dia";
+		} else if (2 == periodoInt) {
+			comprimento = ", boa tarde";
+		} else if (3 == periodoInt){
+			comprimento = ", boa noite";
+		}
+		
+		request.setAttribute("nome", nome);
+		request.setAttribute("comprimento", comprimento);
+		RequestDispatcher rd = request.getRequestDispatcher("saudacoes.jsp");
+		rd.forward(request, response);
 	}
-	
-
 }
 
