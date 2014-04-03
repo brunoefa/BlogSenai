@@ -26,6 +26,7 @@ public class Index extends HttpServlet {
 		try {
 			periodoInt = Integer.parseInt(periodo);
 		} catch (NumberFormatException e) {	
+			periodoInt = 0;
 		}
 		
 		String comprimento = "";
