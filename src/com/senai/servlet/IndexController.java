@@ -1,4 +1,4 @@
-package servlet;
+package com.senai.servlet;
 
 import java.io.IOException;
 
@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/index")
-public class Index extends HttpServlet {
+public class IndexController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public Index() {
+    public IndexController() {
         super();
     }
 

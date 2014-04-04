@@ -1,4 +1,4 @@
-package servlet;
+package com.senai.servlet;
 
 import java.io.IOException;
 
@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/post")
-public class Post extends HttpServlet {
+public class PostController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public Post() {
+    public PostController() {
         super();
     }
 
