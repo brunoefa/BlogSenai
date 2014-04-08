@@ -2,7 +2,6 @@
 <jsp:include page="partes/cabecalho.jsp"></jsp:include>
 <jsp:include page="partes/menu.jsp"></jsp:include>
 
-
 <jsp:include page="partes/titulo-pagina.jsp">
     <jsp:param name="titulo" value="${titulo}"/>
 </jsp:include>
@@ -15,6 +14,6 @@
 		</div>
 	</div>
 	<hr class="featurette-divider">
-</div>		
+</div>
 
 <jsp:include page="partes/rodape.jsp"></jsp:include>

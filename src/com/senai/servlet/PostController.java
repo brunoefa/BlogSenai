@@ -17,7 +17,10 @@ public class PostController extends HttpServlet {
         super();
     }
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service
+	(HttpServletRequest request, 
+			HttpServletResponse response) 
+			throws ServletException, IOException {
 		String titulo = request.getParameter("titulo");
 		String texto = request.getParameter("texto");
 		String resumo = request.getParameter("resumo");

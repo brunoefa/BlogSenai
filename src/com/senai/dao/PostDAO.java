@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import ccom.senai.database.ConnectionFactory;
-
+import com.senai.database.ConnectionFactory;
 import com.senai.entity.Post;
 
 

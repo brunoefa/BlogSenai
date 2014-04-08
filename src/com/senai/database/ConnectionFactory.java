@@ -1,4 +1,6 @@
-package ccom.senai.database;
+package com.senai.database;
+
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
