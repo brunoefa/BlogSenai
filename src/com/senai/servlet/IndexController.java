@@ -1,6 +1,7 @@
 package com.senai.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,39 +10,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.senai.dao.PostDAO;
+import com.senai.entity.Post;
+
 @WebServlet("/index")
 public class IndexController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public IndexController() {
+
+	public IndexController() {
         super();
     }
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String nome = request.getParameter("nome");
-		String periodo = request.getParameter("periodo");
-		
-		int periodoInt = 0;
-		try {
-			periodoInt = Integer.parseInt(periodo);
-		} catch (NumberFormatException e) {	
-			periodoInt = 0;
-		}
-		
-		String comprimento = "";
-		
-		if (1 == periodoInt) {
-			comprimento = ", bom dia";
-		} else if (2 == periodoInt) {
-			comprimento = ", boa tarde";
-		} else if (3 == periodoInt){
-			comprimento = ", boa noite";
-		}
-		
-		request.setAttribute("nome", nome);
-		request.setAttribute("comprimento", comprimento);
-		RequestDispatcher rd = request.getRequestDispatcher("saudacoes.jsp");
+		PostDAO dao = new PostDAO();
+		List<Post> lista = dao.getLista(Boolean.FALSE);
+		request.setAttribute("lista", lista);
+		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 		rd.forward(request, response);
 	}
 }
