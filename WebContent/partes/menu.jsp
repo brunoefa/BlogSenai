@@ -10,11 +10,11 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" id="logo" href="#">Blog Senai</a>
+					<a class="navbar-brand" id="logo" href="index">Blog Senai</a>
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="index.jsp">Início</a></li>
+						<li class="active"><a href="index">Início</a></li>
 						<li><a href="sobre.jsp">Sobre</a></li>
 						<li><a href="contato.jsp">Contato</a></li>
 						<li><a href="novo-artigo.jsp">Novo artigo</a></li>

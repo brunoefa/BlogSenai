@@ -11,9 +11,11 @@
 		<c:forEach items="${lista}" var="post">
 		<div class="row featurette">
 			<div class="col-md-12">
-				<h2 class="featurette-heading"><a href="artigo-completo.jsp">${post.titulo}</a></h2>
+				<h2 class="featurette-heading">
+					<a href="post?acao=mostrar&id=${post.id}">${post.titulo}</a>
+				</h2>
 				<p class="lead">${post.resumo}
-				<a href="#">Leia mais</a></p>
+				<a href="post?acao=mostrar&id=${post.id}">Leia mais</a></p>
 				<h4 class="autor"> ${post.autor}, ${post.data}</h4>
 			</div>
 		</div>
