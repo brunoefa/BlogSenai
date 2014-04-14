@@ -7,14 +7,9 @@
 </jsp:include>
 
 <div class="container marketing">
-	<div class="row featurette">
-		<div class="col-md-12">
-			<h4 class="autor">${post.autor}</h4>
-			<p class="lead">${post.texto}</p>
-		</div>
-	</div>
-	<hr class="featurette-divider">
-	<a href="deletar?acao=confirmar&id=${post.id}" class="btn-lg btn-danger">Deletar Post</a>
+	<h2>Tem certeza que deseja deletar?</h2>
+	<a href="deletar?acao=deletar&id=${id}" class="btn-lg btn-primary">Ok</a>
+	<a href="post?acao=mostrar&id=${id}" class="btn-lg btn-info ">Cancelar</a>
 </div>
 
 <jsp:include page="partes/rodape.jsp"></jsp:include>
