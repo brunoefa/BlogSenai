@@ -27,15 +27,38 @@ public class PostController extends HttpServlet {
 			mostrar(request, response);
 		} else if ("salvar".equals(acao)) {
 			adicionar(request, response);
+		} else if ("confirmar".equals(acao)) {
+			confirmar(request, response);
+		} else if ("deletar".equals(acao)) {
+			deletar(request, response);
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
+	private void deletar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			int id = Integer.parseInt(request.getParameter("id"));
+			request.setAttribute("id", id);
+			PostDAO dao = new PostDAO();
+			dao.deletar(id);
+			request.setAttribute("mensagem", "Post deletado com sucesso");
+		} catch (NumberFormatException e) {
+			request.setAttribute("mensagem", "Post inválido");
+		}
+		RequestDispatcher rd = request.getRequestDispatcher("index");
+		rd.forward(request, response);
+	}
+
+	private void confirmar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			int id = Integer.parseInt(request.getParameter("id"));
+			request.setAttribute("id", id);
+		} catch (NumberFormatException e) {
+			request.setAttribute("mensagem", "Post inválido");
+		}
+		RequestDispatcher rd = request.getRequestDispatcher("confirmacao.jsp");
+		rd.forward(request, response);
+	}
+
 	private void adicionar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Post post = new Post();
 		post.setTitulo(request.getParameter("titulo"));

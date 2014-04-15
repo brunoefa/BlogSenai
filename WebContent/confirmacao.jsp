@@ -7,8 +7,8 @@
 </jsp:include>
 
 <div class="container marketing">
-	<h2>Tem certeza que deseja deletar?</h2>
-	<a href="deletar?acao=deletar&id=${id}" class="btn-lg btn-primary">Ok</a>
+	<h2>Tem certeza que deseja deletar o post ${titulo}?</h2>
+	<a href="post?acao=deletar&id=${id}" class="btn-lg btn-primary">Ok</a>
 	<a href="post?acao=mostrar&id=${id}" class="btn-lg btn-info ">Cancelar</a>
 </div>
 
