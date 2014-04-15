@@ -15,6 +15,7 @@
 	</div>
 	<hr class="featurette-divider">
 	<a href="post?acao=confirmar&id=${post.id}" class="btn-lg btn-danger">Deletar Post</a>
+	<a href="post?acao=editar&id=${post.id}" class="btn-lg btn-info">Editar Post</a>
 </div>
 
 <jsp:include page="partes/rodape.jsp"></jsp:include>

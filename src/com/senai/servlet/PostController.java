@@ -26,14 +26,30 @@ public class PostController extends HttpServlet {
 		if (("mostrar").equals(acao)) {
 			mostrar(request, response);
 		} else if ("salvar".equals(acao)) {
-			adicionar(request, response);
+			salvar(request, response);
 		} else if ("confirmar".equals(acao)) {
 			confirmar(request, response);
 		} else if ("deletar".equals(acao)) {
 			deletar(request, response);
+		} else if ("editar".equals(acao)) {
+			editar(request, response);
 		}
 	}
 	
+	private void editar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Post post = new Post();
+		try {
+			int id = Integer.parseInt(request.getParameter("id"));
+			PostDAO postDAO = new PostDAO();
+			post = postDAO.getPost(id);
+		} catch (NumberFormatException e) {
+			request.setAttribute("mensagem", "Post inválido");
+		}
+		request.setAttribute("post", post);
+		RequestDispatcher rd = request.getRequestDispatcher("novo-artigo.jsp");
+		rd.forward(request, response);
+	}
+
 	private void deletar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			int id = Integer.parseInt(request.getParameter("id"));
@@ -62,7 +78,7 @@ public class PostController extends HttpServlet {
 		rd.forward(request, response);
 	}
 
-	private void adicionar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void salvar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Post post = new Post();
 		post.setTitulo(request.getParameter("titulo"));
 		post.setTexto(request.getParameter("texto"));
@@ -72,15 +88,33 @@ public class PostController extends HttpServlet {
 		post.setStatus(1);
 		
 		PostDAO postDAO = new PostDAO();
-		postDAO.adiciona(post);
+		
+		try {
+			String stringId = request.getParameter("id");
+			Integer id = null;
 
-		request.setAttribute("mensagem", "Post salvo com sucesso!");
+			if (!stringId.isEmpty()) {
+				id = Integer.parseInt(stringId);
+			}
+			
+			if (id == null) {
+				postDAO.adiciona(post);
+				request.setAttribute("mensagem", "Post salvo com sucesso!");
+			} else {
+				post.setId(id);
+				postDAO.atualiza(post);
+				request.setAttribute("mensagem", "Post atualizado com sucesso!");
+			}
+			
+		} catch (NumberFormatException e) {
+			request.setAttribute("mensagem", "Post inválido");
+		}
+
 		RequestDispatcher rd = request .getRequestDispatcher("index");
 		rd.forward(request, response);
 	}
 	
-	private void mostrar(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	private void mostrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Post post = new Post();
 		try {
 			int id = Integer.parseInt(request.getParameter("id"));
