@@ -51,7 +51,10 @@ public class PostController extends HttpServlet {
 	private void confirmar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			int id = Integer.parseInt(request.getParameter("id"));
+			PostDAO dao = new PostDAO();
+			Post post = dao.getPost(id);
 			request.setAttribute("id", id);
+			request.setAttribute("titulo", post.getTitulo());
 		} catch (NumberFormatException e) {
 			request.setAttribute("mensagem", "Post inválido");
 		}
