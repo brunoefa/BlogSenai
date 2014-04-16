@@ -25,7 +25,7 @@ public class PostController extends HttpServlet {
 		String acao = request.getParameter("acao");
 		if (("mostrar").equals(acao)) {
 			mostrar(request, response);
-		} else if ("salvar".equals(acao)) {
+		} else if ("publicar".equals(acao) || "salvar".equals(acao)) {
 			salvar(request, response);
 		} else if ("confirmar".equals(acao)) {
 			confirmar(request, response);
@@ -85,9 +85,13 @@ public class PostController extends HttpServlet {
 		post.setResumo(request.getParameter("resumo"));
 		post.setAutor(request.getParameter("autor"));
 		post.setData(Calendar.getInstance().getTime());
-		post.setStatus(1);
 		
-		PostDAO postDAO = new PostDAO();
+		String acao = request.getParameter("acao");
+		if ("publicar".equals(acao)) {
+			post.setStatus(1);
+		} else if ("salvar".equals(acao)) {
+			post.setStatus(0);
+		}
 		
 		try {
 			String stringId = request.getParameter("id");
@@ -97,6 +101,7 @@ public class PostController extends HttpServlet {
 				id = Integer.parseInt(stringId);
 			}
 			
+			PostDAO postDAO = new PostDAO();
 			if (id == null) {
 				postDAO.adiciona(post);
 				request.setAttribute("mensagem", "Post salvo com sucesso!");

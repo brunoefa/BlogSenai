@@ -28,7 +28,7 @@
 				<label for="assunto">Autor</label>
 				<input type="text" class="form-control" id="autor" name="autor" placeholder="Quem é o autor do texto?" required="required" value="${post.autor}">
 			</div>
-			<button type="submit" class="btn btn-primary btn-lg" id="publicar">Publicar</button>
+			<button type="button" class="btn btn-primary btn-lg" id="publicar">Publicar</button>
 			<button type="button" class="btn btn-success btn-lg" id="salvar">Salvar como rascunho</button>
 		</form>
 	</div>

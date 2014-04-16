@@ -23,7 +23,7 @@ public class IndexController extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PostDAO dao = new PostDAO();
-		List<Post> lista = dao.getLista(Boolean.FALSE);
+		List<Post> lista = dao.getLista(Boolean.TRUE);
 		request.setAttribute("lista", lista);
 		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 		rd.forward(request, response);
