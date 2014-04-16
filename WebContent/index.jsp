@@ -5,7 +5,6 @@
 <jsp:include page="partes/cabecalho.jsp"></jsp:include>
 <jsp:include page="partes/menu.jsp"></jsp:include>
 <jsp:include page="partes/slide.jsp"></jsp:include>
-
 	
 	<div class="container marketing">
 		<c:forEach items="${lista}" var="post">
